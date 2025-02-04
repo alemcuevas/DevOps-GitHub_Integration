@@ -76,3 +76,8 @@ Ahora que tu aplicación está en funcionamiento, es momento de personalizarla a
    - Abre `wwwroot/css/site.css` y personaliza los estilos para cambiar la apariencia de tu aplicación.
 
 🚀 **¡Con estos cambios, tu aplicación empieza a tomar forma!** 
+
+
+## Laboratorio 1: Creación de un flujo de pull requests automatizado con validaciones.
+
+
