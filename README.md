@@ -80,4 +80,63 @@ Ahora que tu aplicación está en funcionamiento, es momento de personalizarla a
 
 ## Laboratorio 1: Creación de un flujo de pull requests automatizado con validaciones.
 
+### Objetivo:
+
+Configurar un flujo de trabajo en GitHub y Azure DevOps que automatice la validación de Pull Requests mediante pruebas y revisiones de código.
+
+## Requisitos Previos
+
+- Repositorio en GitHub con permisos para crear ramas y Pull Requests.
+- Cuenta en Azure DevOps con acceso a Pipelines.
+- Visual Studio Code con la extensión de GitHub y configurado con tu cuenta.
+- .NET SDK instalado y disponible en la terminal.
+
+## Paso 1: Crear una nueva rama para la funcionalidad
+
+1. Abre una terminal en la carpeta del proyecto.
+2. Crea una nueva rama con:
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+
+3. Realiza cambios en el código y guárdalos.
+4. Confirma los cambios:
+   ```bash
+   git add .
+   git commit -m "Agregando nueva funcionalidad"
+
+5. Sube la rama a GitHub:
+   ```bash
+   git push origin feature/nueva-funcionalidad
+
+## Paso 2: Crear un Pull Request en GitHub
+
+1. Ve a tu repositorio en GitHub.
+2. Abre la pestaña Pull Requests y haz clic en New Pull Request.
+3. Selecciona la rama feature/nueva-funcionalidad y compárala con main.
+4. Agrega un título y descripción significativa.
+5. Asigna revisores y etiqueta el PR según sea necesario.
+6. Envía el Pull Request para su revisión.
+
+## Paso 3: Configurar validaciones automáticas en Azure DevOps
+
+1. Abre Azure DevOps y navega a la sección Pipelines.
+2. Crea un nuevo pipeline y conéctalo con tu repositorio de GitHub.
+3. Agrega un archivo YAML para ejecutar pruebas automáticas:
+   ```bash
+   trigger:
+     branches:
+       include:
+         - main
+   pr:
+     branches:
+       include:
+         - feature/*
+   pool:
+     vmImage: 'ubuntu-latest'
+   steps:
+   - script: dotnet test
+     displayName: 'Ejecutar pruebas unitarias'
+
+4. Guarda y ejecuta el pipeline.
+5. Configura reglas de protección de ramas en GitHub para requerir la aprobación del pipeline antes de fusionar cambios.
 
